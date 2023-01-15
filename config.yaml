@@ -4,7 +4,7 @@ default:
   token_address: "0x02d3a27ac3f55d5d91fb0f52759842696a864217"
 
 provider_uri: "http://localhost:8545" # PASTE YOUR GETBLOCK PROVIDER URI
-clickhouse_url: "clickhouse://10.16.68.34:9000/ethereum" # TODO: FIX
+clickhouse_url: "clickhouse://10.16.68.34:9000/ethereum" 
 limit_rows: 70000
 
 port: 8050
