@@ -23,7 +23,7 @@ with your own approach for identification of such wallets.
 
 `PNL history` is the plot that has `block_number` as x-axis and `unrealized PNL` as y-axis.
 
-### PNL per wallet-token pair
+### Unrealized PNL per wallet-token pair
 
 We suggest to use the following formula for `unrealized PNL`
 $$
