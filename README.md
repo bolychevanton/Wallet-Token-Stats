@@ -11,8 +11,7 @@ and open [http://localhost:8050](http://localhost:8050) in your browser.
 What you need to do is write function `get_data` in [`data.py`](/data.py) that extracts statistics for wallet-token 
 pair and plots `Trade history` and `PNL history` graphs. 
  
-P.S. Unfortunately gitflic doesn't support latex formulas, so it is reasonable to use [side Markdown viewer](https://upmath.me/) 
-for this [README.md](/README.md).
+P.S. Unfortunately gitflic doesn't support latex formulas, so we generated [README.pdf](/README.pdf) from this [README.md](/README.md) for you.
 
 ## Statistics description
 
