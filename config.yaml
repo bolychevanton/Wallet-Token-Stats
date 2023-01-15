@@ -1,0 +1,11 @@
+default:
+  degen_ape: "https://image.binance.vision/editor-uploads-original/9c15d9647b9643dfbc5e522299d13593.png"
+  wallet_address: "0x7f8fe804d0d7a0f9fb13293af99c73ecbef47cb0" 
+  token_address: "0x02d3a27ac3f55d5d91fb0f52759842696a864217"
+
+provider_uri: "http://localhost:8545" # PASTE YOUR GETBLOCK PROVIDER URI
+clickhouse_url: "clickhouse://10.16.28.34:9000/ethereum" # TODO: FIX
+limit_rows: 70000
+
+port: 8050
+host: 0.0.0.0
