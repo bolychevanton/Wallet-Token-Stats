@@ -71,9 +71,9 @@ def update_line_chart(n_clicks, wallet_address, token_address):
             token_symbol,
         ) = get_default_data()
 
-    fig_trades = px.line(quotes_df, x="block_number", y="eth_quote")
+    fig_trades = px.line(quotes_df, x="block_number", y="native_quote")
     fig_trades.update_layout(
-        title="Quote history",
+        title="Trade history",
         xaxis_title="Block number",
         yaxis_title="Quote value",
         font=dict(family="Courier New, monospace", size=18, color="#7f7f7f"),

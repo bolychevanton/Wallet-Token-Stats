@@ -10,7 +10,7 @@ def get_default_data() -> tuple[pd.DataFrame, pd.DataFrame, list[int], list[int]
     quotes_df = pd.DataFrame(
         {
             "block_number": np.arange(11000000, 16400000, 1000),
-            "eth_quote": np.ones_like(np.arange(11000000, 16400000, 1000)),
+            "native_quote": np.ones_like(np.arange(11000000, 16400000, 1000)),
         }
     )
 
@@ -49,8 +49,8 @@ def get_data(
     ```
     client.execute(f"SELECT ... FROM quotes WHERE block_number % 100 = 0 LIMIT {CONFIG.limit_rows}")
     ```
-    and fill the interim values with the last left value. For instance, the quote for all the blocks
-    in [16000500, 16000599] is assigned to the quote of 16000500 block.
+    and use the data for `quotes_df` as is. For pnl calculation you can assume that the quote between
+    block_from, block_to where block_from and block_to are divisible by 100 equals to quote as of block_from.
 
     Args:
         token_address (str): token address
