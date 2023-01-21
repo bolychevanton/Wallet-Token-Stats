@@ -1,7 +1,7 @@
 from dash import Dash, dcc, html, Output
 import dash
 import plotly.express as px
-from data import get_default_data, get_data
+from utils.data import get_default_data, get_data
 
 from config import CONFIG
 
@@ -58,7 +58,7 @@ app.layout = html.Pre(
 )
 def update_line_chart(n_clicks, wallet_address, token_address):
     if not n_clicks is None:
-        quotes_df, pnl_df, in_positions, out_positions, token_symbol = get_data(
+        quotes_df, pnl_df, in_transfers, out_transfers, token_symbol = get_data(
             token_address=token_address,
             wallet_address=wallet_address,
         )
@@ -66,8 +66,8 @@ def update_line_chart(n_clicks, wallet_address, token_address):
         (
             quotes_df,
             pnl_df,
-            in_positions,
-            out_positions,
+            in_transfers,
+            out_transfers,
             token_symbol,
         ) = get_default_data()
 
@@ -87,11 +87,11 @@ def update_line_chart(n_clicks, wallet_address, token_address):
         font=dict(family="Courier New, monospace", size=18, color="#7f7f7f"),
     )
 
-    for i in in_positions:
+    for i in in_transfers:
         fig_trades.add_vline(x=i, line_width=1, line_color="green")
         fig_pnl.add_vline(x=i, line_width=1, line_color="green")
 
-    for o in out_positions:
+    for o in out_transfers:
         fig_trades.add_vline(x=o, line_width=1, line_color="red")
         fig_pnl.add_vline(x=o, line_width=1, line_color="red")
 

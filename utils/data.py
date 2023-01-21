@@ -1,9 +1,8 @@
 import pandas as pd
 import numpy as np
 from clickhouse_driver import Client
-from web3 import Web3
 
-from config import CONFIG
+from config import SERVER, CONFIG
 
 
 def get_default_data() -> tuple[pd.DataFrame, pd.DataFrame, list[int], list[int], str]:
@@ -60,9 +59,10 @@ def get_data(
         tuple[pd.DataFrame, pd.DataFrame, list[int], list[int], str]:
             tuple(quotes_df, pnl_df, in_transers, out_transfers, token_symbol)
     """
-
-    client = Client.from_url(CONFIG.clickhouse_url)
-    w3 = Web3(Web3.HTTPProvider(CONFIG.provider_uri))
+    SERVER.start()
+    client = Client.from_url(
+        f"clickhouse://localhost:{SERVER.local_bind_port}/ethereum"
+    )
 
     # YOUR CODE GOES HERE
 
@@ -74,4 +74,8 @@ def get_data(
 
     # Uncomment the line below and delete `return get_default_data()`
     # return quotes_df, pnl_df, in_transers, out_transfers, token_symbol
+
+    # Do not delete the line
+    SERVER.close()
+
     return get_default_data()

@@ -8,7 +8,7 @@ python3 server.py
 ```
 and open [http://localhost:8050](http://localhost:8050) in your browser.
 
-What you need to do is write function `get_data` in [`data.py`](/data.py) that extracts statistics for wallet-token 
+What you need to do is write function `get_data` in [`utils/data.py`](/utils/data.py) that extracts statistics for wallet-token 
 pair and plots `Trade history` and `PNL history` graphs. 
  
 P.S. Unfortunately gitflic doesn't support latex formulas, so we generated [README.pdf](/README.pdf) from this [README.md](/README.md) for you.
@@ -40,14 +40,14 @@ We prepared [Clickhouse](https://clickhouse.com/) sql database which you may use
 We prepared short introductory video (`TODO: ADD LINK`) for your quick start. 
 
 If you want to run sql queries from Python code it is reasonable to use [clickhouse-driver](https://clickhouse-driver.readthedocs.io/en/latest/) 
-library: 
-
+library via
 ```
-from clickhouse_driver import Client
-
-clickhouse_url = "clickhouse://10.16.68.34:9000/ethereum" 
-client = Client.from_url(clickhouse_url)
-
 sql_query = "SELECT * from transactions WHERE block_number = 16000000"
 client.execute(sql_query)
 ```
+or
+```
+sql_query = "SELECT * from transactions WHERE block_number = 16000000"
+client.query_dataframe(sql_query)
+```
+where `client` is initialized in [`utils/data.py`](/utils/data.py) in `get_data` function.
